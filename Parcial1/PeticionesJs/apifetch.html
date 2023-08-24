@@ -4,6 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url("https://st2.depositphotos.com/43385402/43924/i/450/depositphotos_439244854-stock-photo-3d-rendering-of-a-bunch.jpg");
+            
+            background-size: cover;
+            
+            background-attachment: fixed;
+        }
+        h1{
+            background-color: blueviolet;
+            color: white;
+            width: 100%; 
+            text-align: center;
+            padding: 10px; 
+            box-sizing: border-box; 
+            margin-bottom: 20px;
+        }
+        #hTitulo{
+            background-color: blue;
+        }
+        input{
+            width: 200px; 
+            height: 40px; 
+            border: 2px solid white; 
+            background-color: red; 
+            color: black; 
+        }
+    </style>
 </head>
 <body>
     <div id="DivTitulo">
@@ -11,10 +44,11 @@
         <h1 id="hTitulo">Prueba</h1>
     </div>
     <input type="button" value="Api Fetch" id="btnApi">
+    <input type="button" value="Promesas" id="btnPromesa">
     <input type="button" value="XML HTTP REQUEST" id="btnXML">
     <input type="button" value="AXIOS" id="btnAxios">
     <input type="button" value="JQuery" id="btnQuery">
-    <input type="button" value="Promesas" id="btnPromesa">
+    
     <input type="button" value="Async await" id="btnAsyncAwait">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -114,8 +148,7 @@
         const btnAsync= document.getElementById("btnAsyncAwait");
         btnAsync.addEventListener("click", async () => {
             let headersList = {
-                "Accept": "*/*",
-                "User-Agent": "Thunder Client (https://www.thunderclient.com)"
+                "Accept": "*/*"
             }
 
            let response = await fetch(apiURL, { 
@@ -127,6 +160,7 @@
             //console.log(data.slip.advice);
             document.getElementById("hTitulo").innerText=data.slip.advice+' ';
         });
+
     </script>
 </body>
 </html>
