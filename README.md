@@ -3,7 +3,7 @@
 ## Alumno
 Josue Daniel Garcia Maldonado 
 
-### Primera Unidad
+### Parcial1
 #### PeticionesJs
 Archivo: apifetch.html  
 5 peticiones o maneras para conectarse con una api en javascript
@@ -12,3 +12,7 @@ Archivo: apifetch.html
 3. axios
 4. promesas
 5. async await
+
+#### PeticionesParametros
+Archivo: peticion.html  
+creacion de una pagina web con la api de chuck norris.  
