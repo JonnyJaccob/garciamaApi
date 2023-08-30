@@ -15,4 +15,10 @@ Archivo: apifetch.html
 
 #### PeticionesParametros
 Archivo: peticion.html  
-creacion de una pagina web con la api de chuck norris.  
+creacion de una pagina web con la api de chuck norris.
+
+### Parcial2
+#### ModuloESM
+Archivo: home.html  
+Utilizo un modulo con ECMA sin usar npm, usando un metodo de llamada sincrona y un boton asincrona.
+Excelente para solo usar el metodo cuando se necesite y asi ahorrar recursos.  
