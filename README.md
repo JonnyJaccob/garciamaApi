@@ -17,7 +17,6 @@ Archivo: apifetch.html
 Archivo: peticion.html  
 creacion de una pagina web con la api de chuck norris.
 
-### Parcial2
 #### ModuloESM
 Archivo: home.html  
 Utilizo un modulo con ECMA sin usar npm, usando un metodo de llamada sincrona y un boton asincrona.
@@ -29,3 +28,4 @@ Archivo: index.js
 1. Generacion de un archivo de texto con el moodelo Fs usandolo como callback
 2. Instalacion del paquete jsPdf para agregarle a la aplicacion la habilidad de la generacion  de pdf
 3. Generacion de excel 
+### Parcial2
