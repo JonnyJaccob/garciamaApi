@@ -3,7 +3,8 @@
 ## Alumno
 Josue Daniel Garcia Maldonado 
 
-### Parcial1
+## Parcial1
+### Semana 1
 #### PeticionesJs
 Archivo: apifetch.html  
 5 peticiones o maneras para conectarse con una api en javascript
@@ -16,6 +17,10 @@ Archivo: apifetch.html
 #### PeticionesParametros
 Archivo: peticion.html  
 creacion de una pagina web con la api de chuck norris.
+
+### Semana 2
+#### ModuloCummonJS
+En repositiorio github y npm 
 
 #### ModuloESM
 Archivo: home.html  
@@ -36,4 +41,5 @@ puerto 8080 para uno diferente al xampp que es el 80, comprobar la peticion en e
 cuidado con los {} y las ;  
 poner un header para permitir tener mas de dos peticiones al servidor.
 rev
-### Parcial2
+### Semana 3
+## Parcial2
