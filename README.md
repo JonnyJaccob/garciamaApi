@@ -28,4 +28,12 @@ Archivo: index.js
 1. Generacion de un archivo de texto con el moodelo Fs usandolo como callback
 2. Instalacion del paquete jsPdf para agregarle a la aplicacion la habilidad de la generacion  de pdf
 3. Generacion de excel 
+rev
+#### DemostracionCore
+index.js
+peticionAsincrona.html
+puerto 8080 para uno diferente al xampp que es el 80, comprobar la peticion en el thunder client  
+cuidado con los {} y las ;  
+poner un header para permitir tener mas de dos peticiones al servidor.
+rev
 ### Parcial2
