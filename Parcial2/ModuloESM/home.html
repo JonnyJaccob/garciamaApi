@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: blue;
+        }
+        h1{
+            background-color: darkorange;
+        }
+        button{
+            background-color: red;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="frase">
+       <button type="button" id="boton">Obtiene Raza</button>
+    </h1>
+    <script type="module">
+        //import * as moduloes from "./index.js"
+        //console.log(moduloes.GetRazaAventurero(0)); //modo sincrono 
+
+        document.getElementById('boton').addEventListener('click',async ()=>{
+            import("./index.js")
+                .then(function(moduloes){
+                    console.log(moduloes.GetRazaAventurero(0));
+                })
+        });
+
+    </script>
+</body>
+</html>
