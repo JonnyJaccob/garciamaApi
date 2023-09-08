@@ -54,6 +54,12 @@ http://localhost:8080/Alumnos/sistemas?control=100182
 peticionAExpress.html
 Servidor a una pagina web para controlar los get y evitar el error cors con un input (form target) y frame y un paquete de npm cors  
 
+#### ServidorBD 
+archivo: index.js
+Consulta a base de datos local mysql
+#### ServidorBD_MYSQL 
+archivo: index.js
+Consulta a base de datos local mysql de manera asincrona
 #### Parte 2
 
 ## Parcial2

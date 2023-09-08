@@ -60,6 +60,18 @@ app.get("/alumnos/",async (req,resp)=>{
     res.json(rows);
 });
 */
+/*
+app.get("/alumnos/",async (req,resp)=>{
+    try{
+        const conexion = await mysql.createConnection(dataDeBase);
+        const [rows, fields] = await conexion.query('select * from ejemplo.nombre');
+    }catch(err){
+        resp.json({mensaje: "Error de conexion"})
+        console.log(err.message)
+    }
+    
+});
+*/
 app.get("/alumnos/:id",async (req,resp)=>{
     try{
         //req.query o req.body o red.params
@@ -67,13 +79,13 @@ app.get("/alumnos/:id",async (req,resp)=>{
         const conexion = await mysql.createConnection(dataDeBase);
         const [rows, fields] = await conexion.query('select * from ejemplo.nombre where id='+req.params.id);
         if(rows.length == 0){
+            resp.status(404);
             resp.json({mensaje:"Usuario no existe"})
         }else{
             resp.json(rows);
         }
     }catch(err){
-        resp.json({mensaje: "Error de conexion"})
-        console.log(err.message)
+        resp.status(500).json({mensaje: "Error de conexion",tipo: err.message, sql : err.sqlMessage})
     }
     
 });
