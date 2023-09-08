@@ -43,9 +43,17 @@ cuidado con los {} y las ;
 poner un header para permitir tener mas de dos peticiones al servidor.
 rev
 
+
+### Semana 3
 ### ServidorExpress
 index.js
 Express para crear respuestas de servidor ayudado por thunderclient.
 http://localhost:8080/Alumnos/sistemas?control=100182  
-### Semana 3
+### EvitandoCors
+#### Parte 1
+peticionAExpress.html
+Servidor a una pagina web para controlar los get y evitar el error cors con un input (form target) y frame y un paquete de npm cors  
+
+#### Parte 2
+
 ## Parcial2

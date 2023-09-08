@@ -6,11 +6,7 @@ app.use(express.json())
 app.use(cors())
 
 app.get("/alumnos/:carrera",(req,resp)=>{
-    console.log(req.params);
-    console.log(req.query);
-    console.log(req.body);
-    //resp.json({respuesta:"Servidor Express contestando a peticion GET"});
-    resp.jsonp({respuesta:"contestandi a peticion GET"});
+    resp.jsonp({respuesta:"contestando a peticion GET"});
 });
 
 app.get("/alumnos",(req,resp)=>{
