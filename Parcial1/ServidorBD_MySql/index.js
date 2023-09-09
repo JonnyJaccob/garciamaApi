@@ -12,12 +12,12 @@ app.use(cors());
 
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
  
-// setup the logger
-app.use(morgan('combined', { stream: accessLogStream }))
-    
-app.get('/', function (req, res) {
-    res.send('hello, world!')
-});
+    // setup the logger
+    app.use(morgan('combined', { stream: accessLogStream }))
+        
+    app.get('/', function (req, res) {
+        res.send('hello, world!')
+    });
 /*
 app.get("/alumnos/:carrera",(req,resp)=>{
     var connection = mysql.createConnection({

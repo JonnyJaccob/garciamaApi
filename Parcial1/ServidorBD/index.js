@@ -18,12 +18,14 @@ var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
     app.get('/', function (req, res) {
     res.send('hello, world!')
 });
+
 const dataDeBase = {
     host: 'localhost', 
     user: 'root',
     password: '',
     database: 'ejemplo'
 }
+
 app.get("/alumnos/:id",async (req,resp)=>{
     try{
         //req.query o req.body o red.params
