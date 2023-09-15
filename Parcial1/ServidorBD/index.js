@@ -28,7 +28,7 @@ const dataDeBase = {
 app.get("/alumnos",async (req,resp)=>{
     try{
         //req.query o req.body o red.params
-        const conexion = await mysql.createConnection(dataDeBase);
+        const conexion = await mysql2.createConnection(dataDeBase);
         const [rows, fields] = await conexion.query('select * from ejemplo.nombre ');
         if(rows.length == 0){
             resp.status(404);
@@ -45,7 +45,7 @@ app.get("/alumnos/:id",async (req,resp)=>{
     try{
         //req.query o req.body o red.params
         console.log(req.params.id);
-        const conexion = await mysql.createConnection(dataDeBase);
+        const conexion = await mysql2.createConnection(dataDeBase);
         const [rows, fields] = await conexion.query('select * from ejemplo.nombre where id='+req.params.id);
         if(rows.length == 0){
             resp.status(404);
@@ -63,7 +63,7 @@ app.delete("/alumnos",async (req,resp)=>{
     try{
         const variable = req.query.idUsuario;
         console.log(variable);
-        const conexion = await mysql.createConnection(dataDeBase);
+        const conexion = await mysql2.createConnection(dataDeBase);
         const queryy = 'delete from ejemplo.nombre where id='+variable;
         console.log(queryy);
         const [rows, fields] = await conexion.query(queryy);
@@ -84,7 +84,7 @@ app.put("/alumnos",async (req,resp)=>{
         if (typeof variable !== 'number') {
             throw new Error('La variable no es un número.');
         }
-        const conexion = await mysql.createConnection(dataDeBase);
+        const conexion = await mysql2.createConnection(dataDeBase);
         
         let campos =  Object.keys(objeto);
         
@@ -128,7 +128,7 @@ app.put("/alumnos",async (req,resp)=>{
 app.patch("/alumnos/:id", async (req, resp) => {
     try {
       const variable = parseInt(req.query.IdUsuario);
-      const conexion = await mysql.createConnection(dataDeBase);
+      const conexion = await mysql2.createConnection(dataDeBase);
       const sql = 'UPDATE ejemplo.nombre SET nombre = ?, apellido = ? WHERE id = ?';
       const { nombre, apellido } = req.body;
       const [result] = await conexion.execute(sql, [nombre, apellido, variable]);
@@ -142,45 +142,44 @@ app.patch("/alumnos/:id", async (req, resp) => {
       resp.status(500).json({ mensaje: "Error de conexión", tipo: err.message, sql: err.sqlMessage });
     }
   });
-//app.get("/alumnos/:id",async (req,resp)=>{
-//    try{
-//        //req.query o req.body o red.params
-//        console.log(req.params.id);
-//        const conexion = await mysql2.createConnection(dataDeBase);
-//        const [rows, fields] = await conexion.query('select * from ejemplo.nombre where id='+req.params.id);
-//        if(rows.length == 0){
-//            resp.status(404);
-//            resp.json({mensaje:"Usuario no existe"})
-//        }else{
-//            resp.json(rows);
-//        }
-//    }catch(err){
-//        resp.status(500).json({mensaje: "Error de conexion",tipo: err.message, sql : err.sqlMessage})
-//    }
-//});
-//app.get("/alumnos/:carrera",(req,resp)=>{
-//    var connection = mysql.createConnection({
-//        host     : 'localhost',
-//        user     : 'root',
-//        password : '',
-//        database : 'ejemplo'
-//    });
-//    connection.connect(function(err) {
-//        if (err) {
-//          console.error('error connecting: ' + err.stack);
-//          return;
-//        }
-//       
-//        console.log('connected as id ' + connection.threadId);
-//    });
-//    connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-//    if (error) throw error;
-//            console.log('The solution is: ', results[0].solution);
-//            connection.end();
-//            resp.jsonp(results);
-//    });
-//});
-
+app.get("/alumnos/:id",async (req,resp)=>{
+    try{
+        //req.query o req.body o red.params
+        console.log(req.params.id);
+        const conexion = await mysql2.createConnection(dataDeBase);
+        const [rows, fields] = await conexion.query('select * from ejemplo.nombre where id='+req.params.id);
+        if(rows.length == 0){
+            resp.status(404);
+            resp.json({mensaje:"Usuario no existe"})
+        }else{
+            resp.json(rows);
+        }
+    }catch(err){
+        resp.status(500).json({mensaje: "Error de conexion",tipo: err.message, sql : err.sqlMessage})
+    }
+});
+app.get("/alumnos/:carrera",(req,resp)=>{
+    var connection = mysql.createConnection({
+        host     : 'localhost',
+        user     : 'root',
+        password : '',
+        database : 'ejemplo'
+    });
+    connection.connect(function(err) {
+        if (err) {
+          console.error('error connecting: ' + err.stack);
+          return;
+        }
+       
+        console.log('connected as id ' + connection.threadId);
+    });
+    connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+    if (error) throw error;
+            console.log('The solution is: ', results[0].solution);
+            connection.end();
+            resp.jsonp(results);
+    });
+});
 
 app.listen(8080,(req,resp)=>{
     console.log("Servidor express escuchando");
