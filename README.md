@@ -61,5 +61,12 @@ Consulta a base de datos local mysql
 archivo: index.js
 Consulta a base de datos local mysql de manera asincrona
 #### Parte 2
+#### ServidorBD_MYSQL 
+archivo: index.js
+CRUD altas, bajas, modificaciones y consultas.
 
+### Grid
+archivo: Boostrap.html
+Instalacion de JQuery desde la carpeta Extra con ruta relativa
+Peticion a servidor express con un bootstrap table 
 ## Parcial2
