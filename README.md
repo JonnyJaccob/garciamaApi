@@ -69,4 +69,8 @@ CRUD altas, bajas, modificaciones y consultas.
 archivo: Boostrap.html
 Instalacion de JQuery desde la carpeta Extra con ruta relativa
 Peticion a servidor express con un bootstrap table 
+
+### Eventos y FuncionEventos
+archivo: index.js
+eventos, funciones con clase extens, imprimir saludo con un retrado de tiempo.
 ## Parcial2
