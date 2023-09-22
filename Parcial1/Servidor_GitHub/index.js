@@ -34,7 +34,7 @@ function obtenerTokenDesdeJSON() {
 app.use((req, res, next) => {
     try {
         const authMiddleware = basicAuth({
-            users: { 'JonnyJaccob': '1234' },
+            users: { 'JonnyJaccob': obtenerTokenDesdeJSON() },
             unauthorizedResponse: 'Acceso no autorizado',
         });
         authMiddleware(req, res, next);
