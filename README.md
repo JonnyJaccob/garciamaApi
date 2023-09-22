@@ -73,4 +73,10 @@ Peticion a servidor express con un bootstrap table
 ### Eventos y FuncionEventos
 archivo: index.js
 eventos, funciones con clase extens, imprimir saludo con un retrado de tiempo.
+
+### Servidor_GitHub
+archivo: index.js
+Bearer-GitHub / Middleware de Autenticacion
+Ejercicio de generacion de un Bearer Token en su cuenta de Github
+para consultar sus repositorios desde ThunderClient
 ## Parcial2
