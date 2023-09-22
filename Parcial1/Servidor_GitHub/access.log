@@ -125,3 +125,8 @@
 ::ffff:127.0.0.1 - JonnyJaccob [22/Sep/2023:13:43:18 +0000] "GET /github-api HTTP/1.1" 401 35 "-" "Thunder Client (https://www.thunderclient.com)"
 ::ffff:127.0.0.1 - JonnyJaccob [22/Sep/2023:13:45:57 +0000] "GET /github-api HTTP/1.1" 401 35 "-" "Thunder Client (https://www.thunderclient.com)"
 ::ffff:127.0.0.1 - JonnyJaccob [22/Sep/2023:13:46:01 +0000] "GET /github-api HTTP/1.1" 401 20 "-" "Thunder Client (https://www.thunderclient.com)"
+::ffff:127.0.0.1 - JonnyJaccob [22/Sep/2023:13:46:18 +0000] "GET /github-api HTTP/1.1" 401 35 "-" "Thunder Client (https://www.thunderclient.com)"
+::ffff:127.0.0.1 - JonnyJaccob [22/Sep/2023:13:46:49 +0000] "GET /alumnos HTTP/1.1" 200 187 "-" "Thunder Client (https://www.thunderclient.com)"
+::ffff:127.0.0.1 - JonnyJacco [22/Sep/2023:13:46:54 +0000] "GET /alumnos HTTP/1.1" 401 20 "-" "Thunder Client (https://www.thunderclient.com)"
+::ffff:127.0.0.1 - JonnyJaccob [22/Sep/2023:13:46:57 +0000] "GET /alumnos HTTP/1.1" 200 187 "-" "Thunder Client (https://www.thunderclient.com)"
+::ffff:127.0.0.1 - JonnyJacco [22/Sep/2023:13:48:04 +0000] "GET /alumnos HTTP/1.1" 401 20 "-" "Thunder Client (https://www.thunderclient.com)"

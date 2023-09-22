@@ -25,20 +25,38 @@ function obtenerTokenDesdeJSON() {
         console.log("Incio de obtencion de token")
         const configJSON = fs.readFileSync(path.join(__dirname, 'token.json'), 'utf-8');
         const config = JSON.parse(configJSON);
-        return config.githubToken;
+        return config.tokenGithub;
     } catch (error) {
         console.error('Error al leer el archivo JSON de configuración:', error);
         return '';
     }
 }
-app.use(basicAuth({
-        users: { 'JonnyJaccob': obtenerTokenDesdeJSON() },
-        unauthorizedResponse: 'Acceso no autorizado',
-}));
+app.use((req, res, next) => {
+    try {
+        const authMiddleware = basicAuth({
+            users: { 'JonnyJaccob': '1234' },
+            unauthorizedResponse: 'Acceso no autorizado',
+        });
+        authMiddleware(req, res, next);
+    } catch (err) {
+        console.error('Error en el middleware de autenticación: ', err);
+        res.status(500).json({ error: 'Error en el middleware de autenticación' });
+    }
+});
+
 app.get('/github-api', async (req, res) => {
     try {
+        if(!req.auth.user  || req.auth.password)
+        {
+            return res.status(401).json({error: 'Token de auth requerido'})
+        }
+        res.send("Servidor express contestando");
+
+        /*
         console.log('Comenzando enlace...')
-      const response = await axios.get('https://api.github.com/users/JonnyJaccob/repos', {
+        //console.log(`user: ${req.auth.user} password: ${req.auth.password}`)
+        const 
+        response = await axios.get('https://api.github.com/users/JonnyJaccob/repos', {
         headers: {
           'Authorization': `token ${req.auth.user}:${req.auth.password}`,
           'User-Agent': 'Servidor_Github' 
@@ -46,8 +64,23 @@ app.get('/github-api', async (req, res) => {
       });
       console.log('Conexion a github correcta');
       res.json(response.data);
+        $('#table').bootstrapTable({
+            url:'http://localhost:8080/Alumnos',
+            columns: [{
+                field: 'ID',
+                title: 'ID Alumno'
+            }, {
+                field: 'NOMBRE',
+                title: 'Nombre Alumno'
+            }, {
+                field: 'APELLIDO',
+                title: 'Apellido Alumno'
+            }]
+        })*/
     } catch (error) {
-      res.status(500).json({ error: 'Error en la solicitud a la API de GitHub' });
+        const mensaje = 'Error en la solicitud a la API de GitHub - '
+        res.status(500).json({ error: mensaje });
+        console.log(mensaje + " " + error)
     }
   });
 const PORT = process.env.PORT || 3000;
