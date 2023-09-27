@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="idForm" action="http://localhost:8080/Alumnos/" method="post" enctype="application/x-www-form-urlencoded">
+        <label for="nombre" >Nombre</label>
+        <input id="nombre" type="text" name="nombre">
+
+        <label for="apellido">Apellido</label>
+        <input id="apellido" type="text" name="apellido">
+
+        <input type="submit" value="Agregar" id="btnUrl">
+    </form>
+
+    <form action="http://localhost:8080/Alumnos/" method="post" enctype="multipart/form-data">
+        <label for="nombre" >Nombre</label>
+        <input id="nombre" type="text" name="nombre">
+
+        <label for="apellido">Apellido</label>
+        <input id="apellido" type="text" name="apellido">
+
+        <input type="submit" value="Agregar" id="btnmultiPart">
+    </form>
+    <script>
+        const formData = new FormData(document.getElementById("idForm"));
+        const urlSearch = new URLSearchParams(formData).toString();
+        const ruta = 'http://localhost:8080/Alumnos';
+        fetch(ruta,{ method: 'POST', body: formData })
+                .then(response=>response.json())
+                .then(dato=>console.log(dato));
+        fetch(ruta,{ method: 'POST', body: urlSearch })
+                .then(response=>response.json())
+                .then(dato=>console.log(dato));
+        /*
+        getElementById("btnUrl").addEventListener("click", async () => {
+            
+        });
+        getElementById("btnmultiPart").addEventListener("click", async () => {
+            
+        })
+        */
+
+    </script>
+</body>
+</html>

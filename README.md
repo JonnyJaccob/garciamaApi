@@ -80,3 +80,10 @@ Bearer-GitHub / Middleware de Autenticacion
 Ejercicio de generacion de un Bearer Token en su cuenta de Github
 para consultar sus repositorios desde ThunderClient
 ## Parcial2
+### Formulario
+archivo: Form.html 
+dos maneras de MIME type (content type)  
+- application/x-www-form-urlencoded
+- multipart/form-data
+descargar npm multer  
+manejo de formularios  
