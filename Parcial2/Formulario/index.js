@@ -5,6 +5,8 @@ const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
 var mysql2 = require('mysql2/promise');
+const bodyParser = require("body-parser"); //sin uso
+const multer = require('multer');
 
 //const multer = require('multer')
 //const upload = multer()
@@ -62,6 +64,41 @@ app.get("/alumnos/:id",async (req,resp)=>{
         resp.status(500).json({mensaje: "Error de conexion",tipo: err.message, sql : err.sqlMessage})
     }
     
+});
+
+// Configura multer para manejar formularios multipart
+const storage = multer.diskStorage();
+const upload = multer({ storage: storage });
+
+app.post("/Alumnos", upload.none() ,async (req, resp) => {
+    try {
+        let nombre,apellido;
+        if (!(typeof req.query.nombre === "undefined") || !(typeof apellido === "undefined")){
+            nombre = req.query.nombre;
+            apellido = req.query.apellido;
+        }else
+        {
+            const {nombre1,apellido1} = req.body;
+            nombre = nombre1;
+            apellido = apellido1;
+        }
+        if (typeof nombre === "undefined" || typeof apellido === "undefined") {
+            resp.status(400).json({ mensaje: "Los campos 'nombre' y 'apellido' son obligatorios" });
+            return;
+        }
+
+        const conexion = await mysql2.createConnection(dataDeBase);
+        const sql = 'INSERT INTO ejemplo.nombre (nombre, apellido) VALUES (?, ?)';
+        const [result] = await conexion.execute(sql, [nombre, apellido]);
+
+        if (result.affectedRows === 1) {
+            resp.status(201).json({ mensaje: "Alumno creado exitosamente" });
+        } else {
+            resp.status(500).json({ mensaje: "Error al crear el alumno" });
+        }
+    } catch (err) {
+        resp.status(500).json({ mensaje: "Error de conexión", tipo: err.message, sql: err.sqlMessage });
+    }
 });
 
 app.delete("/alumnos",async (req,resp)=>{
