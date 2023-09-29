@@ -26,24 +26,31 @@
         <input type="submit" value="Agregar" id="btnmultiPart">
     </form>
     <script>
+        const headers = {
+            'Content-Type': 'multipart/form-data'
+        };
         const ruta = 'http://localhost:8080/Alumnos';
         document.getElementById("btnUrl").addEventListener("click", async (event) => {
             event.preventDefault(); // Prevent the default form submission
             
             const formData = new FormData(document.getElementById("idFormUrl"));
-            fetch(ruta, { method: 'POST', body: formData })
+            fetch(ruta, { method: 'POST', body: formData})
                 .then(response => response.json())
                 .then(data => console.log(data));
         });
+        const formData = new FormData(document.getElementById("idForm"));
+        const urlSearch = new URLSearchParams(formData).toString();
 
         document.getElementById("btnmultiPart").addEventListener("click", async (event) => {
             event.preventDefault(); // Prevent the default form submission
             
             const formData = new FormData(document.getElementById("idFormMultipart"));
-            fetch(ruta, { method: 'POST', body: formData })
+            fetch(ruta, { method: 'POST', body: formData})
                 .then(response => response.json())
                 .then(data => console.log(data));
         });
+
+        
         //const formData = new FormData(document.getElementById("idForm"));
         //const urlSearch = new URLSearchParams(formData).toString();
         //const ruta = 'http://localhost:8080/Alumnos';

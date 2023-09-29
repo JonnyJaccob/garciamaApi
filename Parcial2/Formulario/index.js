@@ -9,7 +9,7 @@ const bodyParser = require("body-parser"); //sin uso
 const multer = require('multer');
 
 //const multer = require('multer')
-//const upload = multer()
+const upload = multer()
 
 
 app.use(express.json())
@@ -67,8 +67,17 @@ app.get("/alumnos/:id",async (req,resp)=>{
 });
 
 // Configura multer para manejar formularios multipart
-const storage = multer.diskStorage();
-const upload = multer({ storage: storage });
+//const storage = multer.diskStorage({
+//    destination: function (req, file, cb) {
+//      cb(null, '/tmp/my-uploads')
+//    },
+//    filename: function (req, file, cb) {
+//      cb(null, file.fieldname + '-' + Date.now())
+//    }
+//})
+//  
+//const upload = multer({ storage: storage })
+app.use(express.urlencoded({ extended: true }));
 
 app.post("/Alumnos", upload.none() ,async (req, resp) => {
     try {
@@ -78,6 +87,7 @@ app.post("/Alumnos", upload.none() ,async (req, resp) => {
             apellido = req.query.apellido;
         }else
         {
+            console.log(JSON.stringify(req.body))
             const {nombre1,apellido1} = req.body;
             nombre = nombre1;
             apellido = apellido1;
