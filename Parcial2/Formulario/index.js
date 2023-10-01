@@ -87,10 +87,12 @@ app.post("/Alumnos", upload.none() ,async (req, resp) => {
             apellido = req.query.apellido;
         }else
         {
-            console.log(JSON.stringify(req.body))
-            const {nombre1,apellido1} = req.body;
-            nombre = nombre1;
-            apellido = apellido1;
+            console.log(req.body) // [Object: null prototype] { nombre: 'Rey', apellido: 'Misterio' }
+            const cadena = JSON.parse(JSON.stringify(req.body)); // { nombre: 'Rey', apellido: 'Misterio' }
+            nombre = req.body.nombre; //Rey
+            apellido = req.body.apellido; //Misterio
+            console.log(nombre)
+            console.log(apellido)
         }
         if (typeof nombre === "undefined" || typeof apellido === "undefined") {
             resp.status(400).json({ mensaje: "Los campos 'nombre' y 'apellido' son obligatorios" });
