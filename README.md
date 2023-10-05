@@ -87,3 +87,14 @@ dos maneras de MIME type (content type)
 - multipart/form-data
 descargar npm multer  
 manejo de formularios  
+
+### Validacion
+Archivo: indexValidacion.js
+Programa con el modulo express-validator para comprobar que los datos enviados de lado del cliente esten correctos.  
+
+#### Check Squema
+Archivo: IndexCheck.js
+Igual al anterior pero carga un modulo exportado con la informacion y es procesada por checkSquema.  
+
+### ManejoError
+Archivo: index.js y Form.html
