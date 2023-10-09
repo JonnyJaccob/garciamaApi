@@ -98,3 +98,8 @@ Igual al anterior pero carga un modulo exportado con la informacion y es procesa
 
 ### ManejoError
 Archivo: index.js y Form.html
+Una forma de mandar nuestros propios errores en el servidor de express y evitar que un tercer averigue que paquetes estamos utilizando cuando intente romperlo.  
+
+### ValidacionJoi / JOI
+archivo: index.js
+Verificacion de errores con herramienta middleware Joi
