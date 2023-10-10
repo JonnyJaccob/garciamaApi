@@ -101,5 +101,11 @@ Archivo: index.js y Form.html
 Una forma de mandar nuestros propios errores en el servidor de express y evitar que un tercer averigue que paquetes estamos utilizando cuando intente romperlo.  
 
 ### ValidacionJoi / JOI
-archivo: index.js
-Verificacion de errores con herramienta middleware Joi
+archivo: index.js  
+Verificacion de errores con herramienta middleware Joi  
+
+### JsDoc
+archivo: home.html, index.js y out/index.html  
+Ejemplo para documentar paquete npm de manera automatica y tipar las variables.  
+-- npm i -g jsdoc // para instalar de manera global  
+-- jsdoc index.js // para generar la carpeta out y el archivo index.html  

@@ -1,6 +1,7 @@
 //adventurer_races
 /**
- * @param {string[]} razasAventureros - Razas de aventureros para seleccionar.
+ * Arreglo que contiene las razas disponibles para aventureros.
+ * @type {string[]}
  */
 let razasAventureros = [
     "Nuevos Seres Humanos",
