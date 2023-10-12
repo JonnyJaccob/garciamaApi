@@ -109,3 +109,6 @@ archivo: home.html, index.js y out/index.html
 Ejemplo para documentar paquete npm de manera automatica y tipar las variables.  
 -- npm i -g jsdoc // para instalar de manera global  
 -- jsdoc index.js // para generar la carpeta out y el archivo index.html  
+
+### JsDoc2
+archivo: ./src/index.js 

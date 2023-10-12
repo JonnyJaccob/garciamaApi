@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="idFormUrl" action="http://localhost:8080/Alumnos" method="post" enctype="application/x-www-form-urlencoded">
+        <label for="nombre" >Nombre</label>
+        <input id="nombre" type="text" name="nombre">
+
+        <label for="apellido">Apellido</label>
+        <input id="apellido" type="text" name="apellido">
+
+        <input type="submit" value="Agregar" id="btnUrl">
+    </form>
+
+    <form id="idFormFormMultipart" action="http://localhost:8080/Alumnos" method="post" enctype="multipart/form-data">
+        <label for="nombre" >Nombre</label>
+        <input id="nombre" type="text" name="nombre">
+
+        <label for="apellido">Apellido</label>
+        <input id="apellido" type="text" name="apellido">
+
+        <input type="submit" value="Agregar" id="btnmultiPart">
+    </form>
+    <script>
+        const headers = {
+            'Content-Type': 'multipart/form-data'
+        };
+        const ruta = 'http://localhost:8080/Alumnos';
+        document.getElementById("btnUrl").addEventListener("click", async (event) => {
+            event.preventDefault(); // Prevent the default form submission
+            
+            const formData = new FormData(document.getElementById("idFormUrl"));
+            fetch(ruta, { method: 'POST', body: formData})
+                .then(response => response.json())
+                .then(data => console.log(data));
+        });
+        const formData = new FormData(document.getElementById("idForm"));
+        const urlSearch = new URLSearchParams(formData).toString();
+
+        document.getElementById("btnmultiPart").addEventListener("click", async (event) => {
+            event.preventDefault(); // Prevent the default form submission
+            
+            const formData = new FormData(document.getElementById("idFormMultipart"));
+            fetch(ruta, { method: 'POST', body: formData})
+                .then(response => response.json())
+                .then(data => console.log(data));
+        });
+
+        
+        //const formData = new FormData(document.getElementById("idForm"));
+        //const urlSearch = new URLSearchParams(formData).toString();
+        //const ruta = 'http://localhost:8080/Alumnos';
+        //fetch(ruta,{ method: 'POST', body: formData })
+        //        .then(response=>response.json())
+        //        .then(dato=>console.log(dato));
+        //fetch(ruta,{ method: 'POST', body: urlSearch })
+        //        .then(response=>response.json())
+        //        .then(dato=>console.log(dato));
+        /*
+        getElementById("btnUrl").addEventListener("click", async () => {
+            
+        });
+        getElementById("btnmultiPart").addEventListener("click", async () => {
+            
+        })
+        */
+
+    </script>
+</body>
+</html>
