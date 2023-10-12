@@ -1,0 +1,46 @@
+/* Estilo CSS con toque medieval */
+
+/* Paleta de colores */
+body {
+    background-color: #e4f4d7; /* Color crema */
+    font-family: 'Times New Roman', serif; /* Fuente tipográfica con aspecto antiguo */
+    color: #8b0000; /* Color de texto principal */
+}
+
+/* Encabezados */
+.page-title {
+    text-align: center; /* Centra el título en la página */
+    font-size: 2em; /* Tamaño grande para el título */
+}
+
+/* Cajas de descripción */
+.jsdoc-description {
+    background-color: #ffe4b5; /* Amarillo claro */
+    border: 2px solid #8b4513; /* Marrón */
+    padding: 10px;
+    margin: 10px; /* Agrega margen entre las cajas de descripción */
+}
+
+/* Letras capitales ornamentadas */
+.initial-cap {
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: 'Garamond', serif;
+    color: #8b0000;
+    margin-right: 5px;
+}
+
+/* Borde ornamental */
+.medieval-border {
+    border: 2px solid #8b4513; /* Marrón */
+    background-image: url('https://img.freepik.com/fotos-premium/fondo-textura-papel-vintage-marron-grunge_506584-81.jpg');
+    background-repeat: repeat;
+    padding: 10px; /* Agrega espacio interno para que la imagen se muestre como un borde */
+    margin: 10px; /* Agrega margen alrededor del borde */
+}
+
+/* Imágenes medievales */
+.medieval-image {
+    max-width: 100px;
+    max-height: 100px;
+}
