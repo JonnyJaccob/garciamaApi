@@ -71,3 +71,4 @@
 ::1 - - [01/Oct/2023:05:14:44 +0000] "POST /Alumnos HTTP/1.1" 500 64 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0"
 ::1 - - [01/Oct/2023:05:15:11 +0000] "POST /Alumnos HTTP/1.1" 201 40 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0"
 ::1 - - [01/Oct/2023:05:19:47 +0000] "POST /Alumnos HTTP/1.1" 201 40 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0"
+::ffff:127.0.0.1 - - [17/Oct/2023:13:27:30 +0000] "GET /alumno HTTP/1.1" 404 145 "-" "Thunder Client (https://www.thunderclient.com)"

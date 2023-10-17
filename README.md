@@ -112,3 +112,11 @@ Ejemplo para documentar paquete npm de manera automatica y tipar las variables.
 
 ### JsDoc2
 archivo: ./src/index.js 
+
+### ServidorHTTPS 
+servidor con cifrado de protocolo https
+>openssl genrsa -out key.pem
+Generacion de CSR
+>openssl req -new -key key.pem -out csr.pem
+Generacion de certificado SSL
+> openssl x509 -req -days 365 -in csr.pem -signkey key.pem -out cert.pem 
