@@ -114,9 +114,34 @@ Ejemplo para documentar paquete npm de manera automatica y tipar las variables.
 archivo: ./src/index.js 
 
 ### ServidorHTTPS 
-servidor con cifrado de protocolo https
->openssl genrsa -out key.pem
-Generacion de CSR
->openssl req -new -key key.pem -out csr.pem
-Generacion de certificado SSL
-> openssl x509 -req -days 365 -in csr.pem -signkey key.pem -out cert.pem 
+Servidor con cifrado de protocolo https.  
+1. Generación de llave privada
+```shell
+openssl genrsa -out SSL/key.pem  
+```
+2. Generación de CSR (Certificate Signin Request)
+Es un archivo que contiene información que la Autoridad de certificación usará para crear el certificado. En el se incluye información del negocio y del sitio web que se desea proteger con SSL.
+ 
+-- Este cambio solo es temporal durante la sesion
+```shell
+$env:OPENSSL_CONF = "C:\Program Files\OpenSSL-Win64\bin\openssl.cfg"
+
+& "C:\Program Files\OpenSSL-Win64\bin\openssl" req -new -key SSL\key.pem -out SSL\csr.pem  
+```
+
+--- Es necesario porque hay un conflicto con openssl y postgresql en el archivo: "Program Files\PostgreSQL\psqlODBC\etc\openssl.cnf, r)".  
+
+3. Generacion de certificado SSL  
+```shell
+openssl x509 -req -days 365 -in csr.pem -signkey key.pem -out cert.pem
+```
+
+verificar certificados
+```shell
+openssl x509 -text -noout -in SSL\csr.pem 
+openssl rsa -in SSL\key.pem -check
+```
+para ver las credenciales del archivo csr
+```shell
+openssl req -text -noout -in SSL\csr.pem
+```

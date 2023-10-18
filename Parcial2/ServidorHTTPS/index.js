@@ -15,16 +15,16 @@ var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
     app.get('/', function (req, res) {
     res.send('hello, world!')
 });
-
+let opciones;
 try{
-    const opciones = {
+    opciones = {
         key: fs.readFileSync(path.join(__dirname,"SSL/key.pem")),
-        cent: fs.readFileSync(path.join(__dirname,"SSL/cert.pem")),
+        cert: fs.readFileSync(path.join(__dirname,"SSL/cert.pem")),
         error : "nulo"
     }
 }catch(err)
 {
-    const opciones={
+    opciones={
         error: err
     }
 }
@@ -45,7 +45,11 @@ const n = 8083
 app.listen(n,(req,resp)=>{
     console.log("Servidor express escuchando "+ n);
 });
-
-https.createServer().listen(n,(req,res)=>{
-    console.log("Servidor express seguro https escuchando: " + n)
-});
+try
+{
+    https.createServer(opciones,app).listen(n+1,(req,res)=>{
+        console.log("Servidor express seguro https escuchando: " + (n+1))
+    })
+}catch(err){
+    console.log("Error principal: " + err + " Error Opciones: " + opciones.error)  
+}
