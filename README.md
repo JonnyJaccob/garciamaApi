@@ -145,3 +145,4 @@ para ver las credenciales del archivo csr
 ```shell
 openssl req -text -noout -in SSL\csr.pem
 ```
+

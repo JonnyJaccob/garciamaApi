@@ -5,3 +5,5 @@ Parcial1/Servidor_GitHub/token.json
 node_modules
 
 .vscode/
+
+SSL/*.pem
