@@ -7,8 +7,6 @@ dotenv.config()
 const authRouter = Router();
 const SECRET_KEY = process.env.SECRET_KEY;
 
-
-
 authRouter
     .use('/priv',verifyToken)
     .get('/',(req,res)=>{
@@ -17,11 +15,8 @@ authRouter
     .post('/login',(req,res)=>{
         try{
             const {user, pass} = req.body;
-            const user1 = req.body.user;
-            const pass1 = req.body.pass;
             console.log('User ' + user + ' is trying to login.')
             console.log('_______________________')
-            console.log("user: " + user1 + " pass: " + pass1)
             if(user == 'admin' && pass == 'admin'){
                 
                 return res.status(201).json({
@@ -40,23 +35,29 @@ authRouter
     })
 
 async function verifyToken(req,res,next){
-    if(!req.headers.authorization){
-        res.status(401).send('No te estan mandando token / Acceso no authorizado')
-    }
-    //bearer xjjlfjx
-    console.log(req.headers.authorization)
-    const token = req.headers.authorization.split(' ')[1]
-    console.log('_______________________')
-    //token
-    console.log(token)
-    console.log('_______________________') 
-    try{
-        jwt.verify(token,SECRET_KEY,(err)=>{
-            if(err) return res.status(400).json({error: 'Token invalido'})
-            next()
-        })
-    }catch(err){
-        res.json({error: err})
+    
+    if(!req.headers.authorization ){
+        return res.status(401).json('No te estan mandando token / Acceso no authorizado')
+    }else{
+        //bearer xjjlfjx
+        console.log("Clave secreta: " + SECRET_KEY)
+        console.log(req.headers.authorization)
+        const token = req.headers.authorization.split(' ')[1]
+        console.log('_______________________')
+        //token
+        console.log(token)
+        console.log('_______________________') 
+        try{
+            jwt.verify(token,SECRET_KEY,(err)=>{
+                if(err) {
+                    return res.status(400).json({error: 'Token invalido'})
+                }else{
+                    next()
+                }
+            })
+        }catch(err){
+            console.log(err)
+        }
     }
 }
 

@@ -11,3 +11,7 @@
 ::ffff:127.0.0.1 - - [17/Oct/2023:13:26:49 +0000] "GET /alumno HTTP/1.1" 404 145 "-" "Thunder Client (https://www.thunderclient.com)"
 ::ffff:127.0.0.1 - - [17/Oct/2023:13:27:56 +0000] "GET /alumnos HTTP/1.1" 200 279 "-" "Thunder Client (https://www.thunderclient.com)"
 ::ffff:127.0.0.1 - - [17/Oct/2023:13:29:42 +0000] "GET /alumnos HTTP/1.1" 200 31 "-" "Thunder Client (https://www.thunderclient.com)"
+::1 - - [20/Oct/2023:04:24:27 +0000] "GET /alumnos HTTP/1.1" 200 24 "-" "PostmanRuntime/7.33.0"
+::1 - - [20/Oct/2023:04:24:37 +0000] "GET /alumnos HTTP/1.1" 200 24 "-" "PostmanRuntime/7.33.0"
+::1 - - [20/Oct/2023:04:25:35 +0000] "GET /alumnos HTTP/1.1" 200 24 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0"
+::1 - - [20/Oct/2023:04:26:00 +0000] "GET /alumnos HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0"
