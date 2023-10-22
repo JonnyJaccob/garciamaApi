@@ -146,3 +146,15 @@ para ver las credenciales del archivo csr
 openssl req -text -noout -in SSL\csr.pem
 ```
 
+### Servidor JWT /ServidorJWT
+archivo: index.js
+Auntentificacion de datos a travez de paquete npm json web token.
+
+
+### YAML 
+Practica para el uso de archivo yml, alternativa al json.
+archivo: index.js 
+
+### BaseDatoJWT
+Archivo: index.js
+auntentificacion con json web token conectada a una base de datos.
