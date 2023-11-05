@@ -7,3 +7,5 @@ node_modules
 .vscode/
 
 SSL/*.pem
+
+Parcial2/spotify/.env
