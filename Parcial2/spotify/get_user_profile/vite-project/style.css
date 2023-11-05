@@ -95,3 +95,50 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+#spotify-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* O el alto que desees */
+  background-color: #0e0e0e; /* Un color de fondo oscuro, similar al de Spotify */
+}
+
+#profile {
+  background-color: #181818; /* Un tono ligeramente más claro para el fondo del perfil */
+  padding: 2rem;
+  border-radius: 0.5rem; /* Bordes redondeados */
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5); /* Sombra sutil */
+  max-width: 400px; /* Ancho máximo para el perfil */
+  width: 100%; /* Se adapta al tamaño del contenedor */
+  margin: 1rem; /* Separación con respecto a otros elementos */
+  /* Añade más estilos aquí */
+}
+
+#profile h2 {
+  color: #1db954; /* Color verde de Spotify para títulos */
+  margin-bottom: 20px; /* Espaciado debajo del título */
+}
+
+#profile img {
+  border-radius: 100px; /* Hacer la imagen de perfil redonda */
+  margin-bottom: 20px; /* Espaciado debajo de la imagen */
+}
+
+#profile ul {
+  list-style: none; /* Quitar los estilos predeterminados de la lista */
+  padding: 0; /* Quitar el padding predeterminado */
+}
+
+#profile li {
+  margin-bottom: 10px; /* Espaciado entre los ítems de la lista */
+}
+
+#profile a {
+  color: #1db954; /* Color de enlace */
+  text-decoration: none; /* Quitar subrayado de los enlaces */
+}
+
+#profile a:hover {
+  text-decoration: underline; /* Subrayar enlaces al pasar el ratón */
+}

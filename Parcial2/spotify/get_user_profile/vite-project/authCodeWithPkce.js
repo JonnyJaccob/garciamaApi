@@ -1,4 +1,4 @@
-function redirectToAuthCodeFlow(clientId) {
+export function redirectToAuthCodeFlow(clientId) {
     const verifier = generateCodeVerifier(128);
     generateCodeChallenge(verifier).then(challenge => {
         localStorage.setItem("verifier", verifier);
@@ -15,7 +15,7 @@ function redirectToAuthCodeFlow(clientId) {
     });
 }
 
-function getAccessToken(clientId, code) {
+export function getAccessToken(clientId, code) {
     const verifier = localStorage.getItem("verifier");
 
     const params = new URLSearchParams();
@@ -34,7 +34,7 @@ function getAccessToken(clientId, code) {
     .then(data => data.access_token);
 }
 
-function generateCodeVerifier(length) {
+export function generateCodeVerifier(length) {
     let text = '';
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -44,7 +44,7 @@ function generateCodeVerifier(length) {
     return text;
 }
 
-function generateCodeChallenge(codeVerifier) {
+export function generateCodeChallenge(codeVerifier) {
     const data = new TextEncoder().encode(codeVerifier);
     return window.crypto.subtle.digest('SHA-256', data)
         .then(digest => {
