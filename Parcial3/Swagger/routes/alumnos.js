@@ -1,31 +1,8 @@
+// routes/alumnos.js
+
 const express = require('express');
-const app = express();
-//var cors = require('cors');
-const morgan = require('morgan');
-const fs = require('fs');
-const path = require('path');
-//var mysql2 = require('mysql2/promise');
-//const multer = require('multer');
-
-//const multer = require('multer')
-//const upload = multer()
-const tec = require('./alumno.js')
-
-
-
-app.use(express.json())
-//app.use(cors());
-
-var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
- 
-    // setup the logger
-    app.use(morgan('combined', { stream: accessLogStream }))
-    
-    app.get('/', function (req, res) {
-    res.send('hello, world!')
-});
-
-app.use('/Alumno',tec.router);
+const router = express.Router();
+var mysql = require('mysql2/promise');
 
 const dataDeBase = {
     host: 'localhost', 
@@ -33,31 +10,43 @@ const dataDeBase = {
     password: '',
     database: 'ejemplo'
 }
-app.listen(8080,(req,resp)=>{
-    console.log("Servidor express escuchando Puerto" + 8080);
-});
-/*
-app.get("/alumnos",async (req,resp)=>{
+
+/**
+ * @swagger
+ * /empleado:
+ *   tags:
+ *     - empleados
+ *   get:
+ *     description: Obtiene una lista de todos los empleados.
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         type: integer
+ *         description: El ID del empleado.
+ *     responses:
+ *       200:
+ *         description: Regresa una lista de todos los empleados.
+ */
+router.get('/',async (req,res) =>{
     try{
-        //req.query o req.body o red.params
-        const conexion = await mysql2.createConnection(dataDeBase);
+        const conexion = await mysql.createConnection(dataDeBase);
         const [rows, fields] = await conexion.query('select * from ejemplo.nombre ');
         if(rows.length == 0){
-            resp.status(404);
-            resp.json({mensaje:"Usuario no existe"})
+            res.status(404);
+            res.json({mensaje:"Usuario no existe"})
         }else{
-            resp.json(rows);
+            res.json(rows);
         }
     }catch(err){
-        resp.status(500).json({mensaje: "Error de conexion",tipo: err.message, sql : err.sqlMessage})
+        res.status(500).json({mensaje: "Error de conexion",tipo: err.message, sql : err.sqlMessage})
     }
-    
-});
-app.get("/alumnos/:id",async (req,resp)=>{
+})
+
+.get("/:id",async (req,resp)=>{
     try{
-        //req.query o req.body o red.params
-        console.log(req.params.id);
-        const conexion = await mysql2.createConnection(dataDeBase);
+        //console.log(req.params.id);
+        const conexion = await mysql.createConnection(dataDeBase);
         const [rows, fields] = await conexion.query('select * from ejemplo.nombre where id='+req.params.id);
         if(rows.length == 0){
             resp.status(404);
@@ -69,11 +58,9 @@ app.get("/alumnos/:id",async (req,resp)=>{
         resp.status(500).json({mensaje: "Error de conexion",tipo: err.message, sql : err.sqlMessage})
     }
     
-});
+})
 
-app.use(express.urlencoded({ extended: true }));
-
-app.post("/Alumnos", upload.none() ,async (req, resp) => {
+.post("/" ,async (req, resp) => {
     try {
         let nombre,apellido;
         if (!(typeof req.query.nombre === "undefined") || !(typeof apellido === "undefined")){
@@ -81,10 +68,10 @@ app.post("/Alumnos", upload.none() ,async (req, resp) => {
             apellido = req.query.apellido;
         }else
         {
-            console.log(req.body) // [Object: null prototype] { nombre: 'Rey', apellido: 'Misterio' }
-            const cadena = JSON.parse(JSON.stringify(req.body)); // { nombre: 'Rey', apellido: 'Misterio' }
-            nombre = req.body.nombre; //Rey
-            apellido = req.body.apellido; //Misterio
+            console.log(req.body) 
+            const cadena = JSON.parse(JSON.stringify(req.body)); 
+            nombre = req.body.nombre; 
+            apellido = req.body.apellido; 
             console.log(nombre)
             console.log(apellido)
         }
@@ -93,7 +80,7 @@ app.post("/Alumnos", upload.none() ,async (req, resp) => {
             return;
         }
 
-        const conexion = await mysql2.createConnection(dataDeBase);
+        const conexion = await mysql.createConnection(dataDeBase);
         const sql = 'INSERT INTO ejemplo.nombre (nombre, apellido) VALUES (?, ?)';
         const [result] = await conexion.execute(sql, [nombre, apellido]);
 
@@ -105,13 +92,13 @@ app.post("/Alumnos", upload.none() ,async (req, resp) => {
     } catch (err) {
         resp.status(500).json({ mensaje: "Error de conexión", tipo: err.message, sql: err.sqlMessage });
     }
-});
+})
 
-app.delete("/alumnos",async (req,resp)=>{
+.delete("/",async (req,resp)=>{
     try{
         const variable = req.query.idUsuario;
         console.log(variable);
-        const conexion = await mysql2.createConnection(dataDeBase);
+        const conexion = await mysql.createConnection(dataDeBase);
         const queryy = 'delete from ejemplo.nombre where id='+variable;
         console.log(queryy);
         const [rows, fields] = await conexion.query(queryy);
@@ -124,15 +111,15 @@ app.delete("/alumnos",async (req,resp)=>{
         resp.status(500).json({mensaje: "Error de conexion",tipo: err.message, sql : err.sqlMessage})
     }
     
-});
-app.put("/alumnos",async (req,resp)=>{
+})
+.put("/",async (req,resp)=>{
     try{
         const variable = parseInt(req.query.IdUsuario);
         const objeto = req.body;
         if (typeof variable !== 'number') {
             throw new Error('La variable no es un número.');
         }
-        const conexion = await mysql2.createConnection(dataDeBase);
+        const conexion = await mysql.createConnection(dataDeBase);
         
         let campos =  Object.keys(objeto);
         
@@ -171,9 +158,9 @@ app.put("/alumnos",async (req,resp)=>{
         resp.status(500).json({mensaje: "Error de conexion",tipo: err.message, sql : err.sqlMessage})
     }
     
-});
+})
 
-app.patch("/alumnos/:id", async (req, resp) => {
+.patch("/:id", async (req, resp) => {
     try {
       const variable = parseInt(req.query.IdUsuario);
       const conexion = await mysql2.createConnection(dataDeBase);
@@ -189,21 +176,6 @@ app.patch("/alumnos/:id", async (req, resp) => {
     } catch (err) {
       resp.status(500).json({ mensaje: "Error de conexión", tipo: err.message, sql: err.sqlMessage });
     }
-  });
-app.get("/alumnos/:id",async (req,resp)=>{
-    try{
-        //req.query o req.body o red.params
-        console.log(req.params.id);
-        const conexion = await mysql2.createConnection(dataDeBase);
-        const [rows, fields] = await conexion.query('select * from ejemplo.nombre where id='+req.params.id);
-        if(rows.length == 0){
-            resp.status(404);
-            resp.json({mensaje:"Usuario no existe"})
-        }else{
-            resp.json(rows);
-        }
-    }catch(err){
-        resp.status(500).json({mensaje: "Error de conexion",tipo: err.message, sql : err.sqlMessage})
-    }
-});
-*/
+})
+
+module.exports.router = router;

@@ -77,3 +77,4 @@
 ::ffff:127.0.0.1 - - [12/Oct/2023:13:36:28 +0000] "GET /Alumno HTTP/1.1" 404 145 "-" "Thunder Client (https://www.thunderclient.com)"
 ::ffff:127.0.0.1 - - [12/Oct/2023:13:37:18 +0000] "GET /Alumno HTTP/1.1" 200 31 "-" "Thunder Client (https://www.thunderclient.com)"
 ::ffff:127.0.0.1 - - [12/Oct/2023:13:42:58 +0000] "POST /Alumno HTTP/1.1" 200 32 "-" "Thunder Client (https://www.thunderclient.com)"
+::ffff:127.0.0.1 - - [09/Nov/2023:16:55:52 +0000] "GET /alumno HTTP/1.1" 200 31 "-" "Thunder Client (https://www.thunderclient.com)"
