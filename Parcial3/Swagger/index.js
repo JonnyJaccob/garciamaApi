@@ -6,8 +6,7 @@ const app = express();
 const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
-const rutaAlumno = './routes/alumnos'
-const tec = require(rutaAlumno)
+const tec = require('./routes/alumnos')
 
 app.use(express.json())
 
@@ -26,14 +25,14 @@ const swaggerOptions = {
     definition: {
         openapi: '3.0.0',
     info: {
-        title: 'API Empleados',
+        title: 'API Alumnos',
         version: '1.0.0',
     },
     servers:[
         {url: "http://localhost:"+PORT}
     ],
     },
-    apis: [`${path.join(__dirname,rutaAlumno)}`],
+    apis: [`${path.join(__dirname,'./routes/alumnos.js')}`],
 };
 
 
