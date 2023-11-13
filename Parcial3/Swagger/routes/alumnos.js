@@ -1,6 +1,7 @@
 // routes/alumnos.js
 
 const express = require('express');
+const { appendFile } = require('fs');
 const router = express.Router();
 var mysql = require('mysql2/promise');
 
@@ -56,6 +57,23 @@ router.get('/',async (req,res) =>{
     }
 })
 
+/**
+ * @swagger
+ * /empleado:
+ *   tags:
+ *     - empleados
+ *   get:
+ *     description: Obtiene una lista de todos los empleados.
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         type: integer
+ *         description: El ID del empleado.
+ *     responses:
+ *       200:
+ *         description: Regresa una lista de todos los empleados.
+ */
 .get("/:id",async (req,resp)=>{
     try{
         //console.log(req.params.id);
@@ -73,6 +91,23 @@ router.get('/',async (req,res) =>{
     
 })
 
+/**
+ * @swagger
+ * /empleado:
+ *   tags:
+ *     - empleados
+ *   post:
+ *     description: Obtiene una lista de todos los empleados.
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         type: integer
+ *         description: El ID del empleado.
+ *     responses:
+ *       200:
+ *         description: Regresa una lista de todos los empleados.
+ */
 .post("/" ,async (req, resp) => {
     try {
         let nombre,apellido;
@@ -106,7 +141,23 @@ router.get('/',async (req,res) =>{
         resp.status(500).json({ mensaje: "Error de conexión", tipo: err.message, sql: err.sqlMessage });
     }
 })
-
+/**
+ * @swagger
+ * /empleado:
+ *   tags:
+ *     - empleados
+ *   delete:
+ *     description: Obtiene una lista de todos los empleados.
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         type: integer
+ *         description: El ID del empleado.
+ *     responses:
+ *       200:
+ *         description: Regresa una lista de todos los empleados.
+ */
 .delete("/",async (req,resp)=>{
     try{
         const variable = req.query.idUsuario;
@@ -125,6 +176,23 @@ router.get('/',async (req,res) =>{
     }
     
 })
+/**
+ * @swagger
+ * /empleado:
+ *   tags:
+ *     - empleados
+ *   put:
+ *     description: Obtiene una lista de todos los empleados.
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         type: integer
+ *         description: El ID del empleado.
+ *     responses:
+ *       200:
+ *         description: Regresa una lista de todos los empleados.
+ */
 .put("/",async (req,resp)=>{
     try{
         const variable = parseInt(req.query.IdUsuario);
@@ -172,7 +240,23 @@ router.get('/',async (req,res) =>{
     }
     
 })
-
+/**
+ * @swagger
+ * /empleado:
+ *   tags:
+ *     - empleados
+ *   patch:
+ *     description: Obtiene una lista de todos los empleados.
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         type: integer
+ *         description: El ID del empleado.
+ *     responses:
+ *       200:
+ *         description: Regresa una lista de todos los empleados.
+ */
 .patch("/:id", async (req, resp) => {
     try {
       const variable = parseInt(req.query.IdUsuario);
@@ -190,5 +274,7 @@ router.get('/',async (req,res) =>{
       resp.status(500).json({ mensaje: "Error de conexión", tipo: err.message, sql: err.sqlMessage });
     }
 })
+
+
 
 module.exports.router = router;

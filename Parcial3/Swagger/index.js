@@ -4,11 +4,14 @@ const swaggerUI = require('swagger-ui-express');
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-const fs = require('fs');
 const path = require('path');
 const tec = require('./routes/alumnos')
+const fs = require('fs');
+const { SwaggerTheme } = require('swagger-themes');
 
 app.use(express.json())
+
+const theme = new SwaggerTheme('v3');
 
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
  
@@ -21,24 +24,26 @@ var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
 
 app.use('/alumnos',tec.router);
 
+const data = fs.readFileSync(`${path.join(__dirname,'./swagger.json')}`);
+const defObj = JSON.parse(data);
+
 const swaggerOptions = {
-    definition: {
-        openapi: '3.0.0',
-    info: {
-        title: 'API Alumnos',
-        version: '1.0.0',
-    },
-    servers:[
-        {url: "http://localhost:"+PORT}
-    ],
-    },
+    definition: defObj,
     apis: [`${path.join(__dirname,'./routes/alumnos.js')}`],
 };
 
+const options = {
+    explorer: true,
+    customCss: theme.getBuffer('dark')
+};
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
      
-app.use("/api-docs",swaggerUI.serve,swaggerUI.setup(swaggerDocs));
+app.use("/api-docs",swaggerUI.serve,swaggerUI.setup(swaggerDocs,options));
+
+app.use("/api-docs-json",(req, res) =>{
+    res.json(swaggerDocs)
+})
 
 app.listen(PORT,(req,resp)=>{
     console.log("Servidor express escuchando: - " + PORT);

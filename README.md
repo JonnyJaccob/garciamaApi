@@ -158,3 +158,9 @@ archivo: index.js
 ### BaseDatoJWT
 Archivo: index.js
 auntentificacion con json web token conectada a una base de datos.
+
+## Parcial 3
+### Swagger 
+archivo: index.js
+forma de documentar rutas que solicitan peticiones http
+
