@@ -8,6 +8,7 @@ const path = require('path');
 const tec = require('./routes/alumnos')
 const fs = require('fs');
 const { SwaggerTheme } = require('swagger-themes');
+const redoc = require('redoc-express');
 
 app.use(express.json())
 
@@ -26,6 +27,8 @@ app.use('/alumnos',tec.router);
 
 const data = fs.readFileSync(`${path.join(__dirname,'./swagger.json')}`);
 const defObj = JSON.parse(data);
+const read = fs.readFileSync(`${path.join(__dirname,'./README.md')}`,{encoding:'utf8',flag:'r'});
+defObj.info.description = read
 
 const swaggerOptions = {
     definition: defObj,
@@ -45,6 +48,38 @@ app.use("/api-docs-json",(req, res) =>{
     res.json(swaggerDocs)
 })
 
+app.get(
+    '/api-docs-redoc',
+    redoc({
+      title: 'API Docs',
+      specUrl: '/api-docs-json',
+      nonce: '', // <= it is optional,we can omit this key and value
+      // we are now start supporting the redocOptions object
+      // you can omit the options object if you don't need it
+      // https://redocly.com/docs/api-reference-docs/configuration/functionality/
+      redocOptions: {
+        theme: {
+          colors: {
+            primary: {
+              main: '#6EC5AB'
+            }
+          },
+          typography: {
+            fontFamily: `"museo-sans", 'Helvetica Neue', Helvetica, Arial, sans-serif`,
+            fontSize: '15px',
+            lineHeight: '1.5',
+            code: {
+              code: '#87E8C7',
+              backgroundColor: '#4D4D4E'
+            }
+          },
+          menu: {
+            backgroundColor: '#ffffff'
+          }
+        }
+      }
+    })
+  );
 app.listen(PORT,(req,resp)=>{
     console.log("Servidor express escuchando: - " + PORT);
 });
