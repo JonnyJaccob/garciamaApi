@@ -27,20 +27,14 @@ router.get('/', (req, res) => {
 
 /**
  * @swagger
- * /empleado:
+ * /alumnos:
  *   tags:
- *     - empleados
+ *     - alumnos
  *   get:
- *     description: Obtiene una lista de todos los empleados.
- *     parameters:
- *       - name: id
- *         in: path
- *         required: true
- *         type: integer
- *         description: El ID del empleado.
+ *     description: Obtiene una lista de todos los alumnos.
  *     responses:
  *       200:
- *         description: Regresa una lista de todos los empleados.
+ *         description: Regresa una lista de todos los alumnos.
  */
 router.get('/',async (req,res) =>{
     try{
@@ -59,20 +53,21 @@ router.get('/',async (req,res) =>{
 
 /**
  * @swagger
- * /empleado:
+ * /alumnos:
  *   tags:
- *     - empleados
+ *     - alumnos
  *   get:
- *     description: Obtiene una lista de todos los empleados.
+ *     description: Obtiene una lista de todos los alumnos.
  *     parameters:
  *       - name: id
  *         in: path
  *         required: true
- *         type: integer
- *         description: El ID del empleado.
+ *         schema:
+ *           type: integer
+ *         description: El ID del alumno.
  *     responses:
  *       200:
- *         description: Regresa una lista de todos los empleados.
+ *         description: Regresa una lista de todos los alumnos.
  */
 .get("/:id",async (req,resp)=>{
     try{
@@ -93,20 +88,14 @@ router.get('/',async (req,res) =>{
 
 /**
  * @swagger
- * /empleado:
+ * /alumnos:
  *   tags:
- *     - empleados
+ *     - alumnos
  *   post:
- *     description: Obtiene una lista de todos los empleados.
- *     parameters:
- *       - name: id
- *         in: path
- *         required: true
- *         type: integer
- *         description: El ID del empleado.
+ *     description: Obtiene una lista de todos los alumnos.
  *     responses:
  *       200:
- *         description: Regresa una lista de todos los empleados.
+ *         description: Regresa una lista de todos los alumnos.
  */
 .post("/" ,async (req, resp) => {
     try {
@@ -143,20 +132,14 @@ router.get('/',async (req,res) =>{
 })
 /**
  * @swagger
- * /empleado:
+ * /alumnos:
  *   tags:
- *     - empleados
+ *     - alumnos
  *   delete:
- *     description: Obtiene una lista de todos los empleados.
- *     parameters:
- *       - name: id
- *         in: path
- *         required: true
- *         type: integer
- *         description: El ID del empleado.
+ *     description: Obtiene una lista de todos los alumnos.
  *     responses:
  *       200:
- *         description: Regresa una lista de todos los empleados.
+ *         description: Regresa una lista de todos los alumnos.
  */
 .delete("/",async (req,resp)=>{
     try{
@@ -178,20 +161,14 @@ router.get('/',async (req,res) =>{
 })
 /**
  * @swagger
- * /empleado:
+ * /alumnos:
  *   tags:
- *     - empleados
+ *     - alumnos
  *   put:
- *     description: Obtiene una lista de todos los empleados.
- *     parameters:
- *       - name: id
- *         in: path
- *         required: true
- *         type: integer
- *         description: El ID del empleado.
+ *     description: Obtiene una lista de todos los alumnos.
  *     responses:
  *       200:
- *         description: Regresa una lista de todos los empleados.
+ *         description: Regresa una lista de todos los alumnos.
  */
 .put("/",async (req,resp)=>{
     try{
@@ -242,20 +219,21 @@ router.get('/',async (req,res) =>{
 })
 /**
  * @swagger
- * /empleado:
+ * /alumnos:
  *   tags:
- *     - empleados
+ *     - alumnos
  *   patch:
- *     description: Obtiene una lista de todos los empleados.
+ *     description: Obtiene una lista de todos los alumnos.
  *     parameters:
  *       - name: id
  *         in: path
  *         required: true
- *         type: integer
- *         description: El ID del empleado.
+ *         schema:
+ *           type: integer
+ *         description: El ID del alumno.
  *     responses:
  *       200:
- *         description: Regresa una lista de todos los empleados.
+ *         description: Regresa una lista de todos los alumnos.
  */
 .patch("/:id", async (req, resp) => {
     try {
