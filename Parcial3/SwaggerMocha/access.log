@@ -395,3 +395,6 @@
 ::1 - - [17/Nov/2023:14:30:03 +0000] "GET /api-docs-redoc/ HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0"
 ::1 - - [17/Nov/2023:14:30:03 +0000] "GET /api-docs-json HTTP/1.1" 304 - "http://localhost:8083/api-docs-redoc/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 OPR/102.0.0.0"
 ::1 - - [17/Nov/2023:14:42:57 +0000] "GET /api-docs-json HTTP/1.1" 200 1430 "-" "undici"
+::1 - - [22/Nov/2023:14:40:55 +0000] "GET /alumno HTTP/1.1" 404 145 "-" "-"
+::1 - - [22/Nov/2023:14:42:21 +0000] "GET /alumno HTTP/1.1" 404 145 "-" "-"
+::1 - - [22/Nov/2023:14:44:43 +0000] "GET /alumnos HTTP/1.1" 200 12 "-" "-"
