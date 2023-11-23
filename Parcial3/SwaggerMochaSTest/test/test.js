@@ -11,7 +11,7 @@ const expect = chai.expect;
 describe("Prueba la ruta de alumnos", ()=>{
     it("Prueba metodo get",()=>{
         request(app)
-            .get('/')
+            .get('/alumnos')
             .expect(200)
             .end((err,res) =>{
             if(err) throw err;
