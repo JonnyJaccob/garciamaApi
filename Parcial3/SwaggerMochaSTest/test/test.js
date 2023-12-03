@@ -1,12 +1,10 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const request = require('supertest');
-
 chai.use(chaiHttp);
 
-let app = 'http://localhost:8083';
+const request = require('supertest');
 
-const expect = chai.expect;
+let app = 'http://localhost:8083';
 
 describe("Prueba la ruta de alumnos", ()=>{
     it("Prueba metodo get",()=>{
